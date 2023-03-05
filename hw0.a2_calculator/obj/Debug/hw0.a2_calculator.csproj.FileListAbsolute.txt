@@ -1,0 +1,11 @@
+D:\code\CSharp\hw0.a2_calculator\bin\Debug\hw0.a2_calculator.exe.config
+D:\code\CSharp\hw0.a2_calculator\bin\Debug\hw0.a2_calculator.exe
+D:\code\CSharp\hw0.a2_calculator\bin\Debug\hw0.a2_calculator.pdb
+D:\code\CSharp\hw0.a2_calculator\obj\Debug\hw0.a2_calculator.csproj.AssemblyReference.cache
+D:\code\CSharp\hw0.a2_calculator\obj\Debug\hw0.a2_calculator.csproj.SuggestedBindingRedirects.cache
+D:\code\CSharp\hw0.a2_calculator\obj\Debug\hw0.a2_calculator.Form1.resources
+D:\code\CSharp\hw0.a2_calculator\obj\Debug\hw0.a2_calculator.Properties.Resources.resources
+D:\code\CSharp\hw0.a2_calculator\obj\Debug\hw0.a2_calculator.csproj.GenerateResource.cache
+D:\code\CSharp\hw0.a2_calculator\obj\Debug\hw0.a2_calculator.csproj.CoreCompileInputs.cache
+D:\code\CSharp\hw0.a2_calculator\obj\Debug\hw0.a2_calculator.exe
+D:\code\CSharp\hw0.a2_calculator\obj\Debug\hw0.a2_calculator.pdb

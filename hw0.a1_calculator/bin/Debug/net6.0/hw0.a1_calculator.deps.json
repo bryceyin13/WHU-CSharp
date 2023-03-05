@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "hw0.a1_calculator/1.0.0": {
+        "runtime": {
+          "hw0.a1_calculator.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "hw0.a1_calculator/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
