@@ -1,0 +1,15 @@
+D:\code\CSharp\hw1.b1-b3\bin\Debug\net6.0\hw1.b1-b3.exe
+D:\code\CSharp\hw1.b1-b3\bin\Debug\net6.0\hw1.b1-b3.deps.json
+D:\code\CSharp\hw1.b1-b3\bin\Debug\net6.0\hw1.b1-b3.runtimeconfig.json
+D:\code\CSharp\hw1.b1-b3\bin\Debug\net6.0\hw1.b1-b3.dll
+D:\code\CSharp\hw1.b1-b3\bin\Debug\net6.0\hw1.b1-b3.pdb
+D:\code\CSharp\hw1.b1-b3\obj\Debug\net6.0\hw1.b1-b3.csproj.AssemblyReference.cache
+D:\code\CSharp\hw1.b1-b3\obj\Debug\net6.0\hw1.b1-b3.GeneratedMSBuildEditorConfig.editorconfig
+D:\code\CSharp\hw1.b1-b3\obj\Debug\net6.0\hw1.b1-b3.AssemblyInfoInputs.cache
+D:\code\CSharp\hw1.b1-b3\obj\Debug\net6.0\hw1.b1-b3.AssemblyInfo.cs
+D:\code\CSharp\hw1.b1-b3\obj\Debug\net6.0\hw1.b1-b3.csproj.CoreCompileInputs.cache
+D:\code\CSharp\hw1.b1-b3\obj\Debug\net6.0\hw1.b1-b3.dll
+D:\code\CSharp\hw1.b1-b3\obj\Debug\net6.0\refint\hw1.b1-b3.dll
+D:\code\CSharp\hw1.b1-b3\obj\Debug\net6.0\hw1.b1-b3.pdb
+D:\code\CSharp\hw1.b1-b3\obj\Debug\net6.0\hw1.b1-b3.genruntimeconfig.cache
+D:\code\CSharp\hw1.b1-b3\obj\Debug\net6.0\ref\hw1.b1-b3.dll
