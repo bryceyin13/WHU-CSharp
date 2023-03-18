@@ -1,0 +1,15 @@
+D:\code\CSharp\hw2.c1\obj\Debug\net6.0\hw2.c1.csproj.AssemblyReference.cache
+D:\code\CSharp\hw2.c1\obj\Debug\net6.0\hw2.c1.GeneratedMSBuildEditorConfig.editorconfig
+D:\code\CSharp\hw2.c1\obj\Debug\net6.0\hw2.c1.AssemblyInfoInputs.cache
+D:\code\CSharp\hw2.c1\obj\Debug\net6.0\hw2.c1.AssemblyInfo.cs
+D:\code\CSharp\hw2.c1\obj\Debug\net6.0\hw2.c1.csproj.CoreCompileInputs.cache
+D:\code\CSharp\hw2.c1\bin\Debug\net6.0\hw2.c1.exe
+D:\code\CSharp\hw2.c1\bin\Debug\net6.0\hw2.c1.deps.json
+D:\code\CSharp\hw2.c1\bin\Debug\net6.0\hw2.c1.runtimeconfig.json
+D:\code\CSharp\hw2.c1\bin\Debug\net6.0\hw2.c1.dll
+D:\code\CSharp\hw2.c1\bin\Debug\net6.0\hw2.c1.pdb
+D:\code\CSharp\hw2.c1\obj\Debug\net6.0\hw2.c1.dll
+D:\code\CSharp\hw2.c1\obj\Debug\net6.0\refint\hw2.c1.dll
+D:\code\CSharp\hw2.c1\obj\Debug\net6.0\hw2.c1.pdb
+D:\code\CSharp\hw2.c1\obj\Debug\net6.0\hw2.c1.genruntimeconfig.cache
+D:\code\CSharp\hw2.c1\obj\Debug\net6.0\ref\hw2.c1.dll
