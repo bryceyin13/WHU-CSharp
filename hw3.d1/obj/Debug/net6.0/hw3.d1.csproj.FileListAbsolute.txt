@@ -1,0 +1,15 @@
+D:\code\CSharp\hw3.d1\bin\Debug\net6.0\hw3.d1.exe
+D:\code\CSharp\hw3.d1\bin\Debug\net6.0\hw3.d1.deps.json
+D:\code\CSharp\hw3.d1\bin\Debug\net6.0\hw3.d1.runtimeconfig.json
+D:\code\CSharp\hw3.d1\bin\Debug\net6.0\hw3.d1.dll
+D:\code\CSharp\hw3.d1\bin\Debug\net6.0\hw3.d1.pdb
+D:\code\CSharp\hw3.d1\obj\Debug\net6.0\hw3.d1.csproj.AssemblyReference.cache
+D:\code\CSharp\hw3.d1\obj\Debug\net6.0\hw3.d1.GeneratedMSBuildEditorConfig.editorconfig
+D:\code\CSharp\hw3.d1\obj\Debug\net6.0\hw3.d1.AssemblyInfoInputs.cache
+D:\code\CSharp\hw3.d1\obj\Debug\net6.0\hw3.d1.AssemblyInfo.cs
+D:\code\CSharp\hw3.d1\obj\Debug\net6.0\hw3.d1.csproj.CoreCompileInputs.cache
+D:\code\CSharp\hw3.d1\obj\Debug\net6.0\hw3.d1.dll
+D:\code\CSharp\hw3.d1\obj\Debug\net6.0\refint\hw3.d1.dll
+D:\code\CSharp\hw3.d1\obj\Debug\net6.0\hw3.d1.pdb
+D:\code\CSharp\hw3.d1\obj\Debug\net6.0\hw3.d1.genruntimeconfig.cache
+D:\code\CSharp\hw3.d1\obj\Debug\net6.0\ref\hw3.d1.dll

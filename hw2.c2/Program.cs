@@ -39,7 +39,7 @@ namespace AlarmClockspace
         void alarm_OnTick(object sender, TickEventArgs e)
         {
             Console.Write("Time now is: ");
-            for (int i = 1; i <= 10; i++)
+            for (int i = 1; i <= 20; i++)
             {
                 Thread.Sleep(1000);
                 Console.Write(i + " ");
@@ -50,7 +50,7 @@ namespace AlarmClockspace
         }
         void alarm_Alarm(object sender, AlarmEventArgs e)
         {
-            Thread.Sleep(4500);
+            Thread.Sleep(6000);
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine();
             Console.Write("  <Alarm Clock Rings! ! !>  \n");
