@@ -192,11 +192,12 @@ namespace OrderManagement
                                 List<Order> qorders = new List<Order>();
                                 Console.WriteLine("What do you want to query(" +
                                             "1 represents ID, 2 represents Commodity, " +
-                                            "3 represents Customer, 4 represents OrderPrice)? ");
+                                            "3 represents Customer, 4 represents OrderPrice, 5 represents all orders)? ");
                                 int qtype = Convert.ToInt32(Console.ReadLine());
                                 switch (qtype)
                                 {
                                     case 1:
+                                        qorders.Clear();
                                         Console.WriteLine("Please in put ID you want to query: ");
                                         int qId = Convert.ToInt32(Console.ReadLine());
                                         foreach (Order order1 in OrderService.orders)
@@ -206,7 +207,7 @@ namespace OrderManagement
                                                 qorders.Add(order1);
                                             }
                                         }
-                                        var res1 = from n in OrderService.orders
+                                        var res1 = from n in qorders
                                                    orderby n.Details.OrderPrice
                                                    select n;
                                         foreach (var item in res1)
@@ -216,6 +217,7 @@ namespace OrderManagement
                                         }
                                         break;
                                     case 2:
+                                        qorders.Clear();
                                         Console.WriteLine("Please in put Commodity you want to query: ");
                                         string qcom = Console.ReadLine();
                                         foreach (Order order1 in OrderService.orders)
@@ -225,7 +227,7 @@ namespace OrderManagement
                                                 qorders.Add(order1);
                                             }
                                         }
-                                        var res2 = from n in OrderService.orders
+                                        var res2 = from n in qorders
                                                    orderby n.Details.OrderPrice
                                                    select n;
                                         foreach (var item in res2)
@@ -235,6 +237,7 @@ namespace OrderManagement
                                         }
                                         break;
                                     case 3:
+                                        qorders.Clear();
                                         Console.WriteLine("Please in put Customer you want to query: ");
                                         string qcust = Console.ReadLine();
                                         foreach (Order order1 in OrderService.orders)
@@ -244,7 +247,7 @@ namespace OrderManagement
                                                 qorders.Add(order1);
                                             }
                                         }
-                                        var res3 = from n in OrderService.orders
+                                        var res3 = from n in qorders
                                                    orderby n.Details.OrderPrice
                                                    select n;
                                         foreach (var item in res3)
@@ -254,6 +257,7 @@ namespace OrderManagement
                                         }
                                         break;
                                     case 4:
+                                        qorders.Clear();
                                         Console.WriteLine("Please in put ID you want to query: ");
                                         int qoprice = Convert.ToInt32(Console.ReadLine());
                                         foreach (Order order1 in OrderService.orders)
@@ -263,12 +267,19 @@ namespace OrderManagement
                                                 qorders.Add(order1);
                                             }
                                         }
-                                        var res4 = from n in OrderService.orders
+                                        var res4 = from n in qorders
                                                    orderby n.Details.OrderPrice
                                                    select n;
                                         foreach (var item in res4)
                                         {
                                             Console.WriteLine(item.ToString());
+                                            Console.WriteLine();
+                                        }
+                                        break;
+                                    case 5:
+                                        foreach (Order order1 in OrderService.orders)
+                                        {
+                                            Console.WriteLine(order1.ToString());
                                             Console.WriteLine();
                                         }
                                         break;
