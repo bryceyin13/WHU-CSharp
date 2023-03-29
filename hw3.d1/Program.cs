@@ -101,20 +101,23 @@ namespace OrderManagement
                                 "1 represents Commodity, " +
                                 "2 represents Customer, 3 represents OrderPrice. " +
                                 "Press 4 to use ID as tacit key)? ");
-                    int stype = Convert.ToInt32(Console.ReadLine());
-                    if (stype == 4)
-                        orders.OrderBy(a => a.Id);
+                    int stype = 4;
+                    stype = Convert.ToInt32(Console.ReadLine());
                     switch (stype)
                     {
                         case 1:
-                            orders.OrderBy(a => a.Details.Commodity);
+                            orders = orders.OrderBy(a => a.Details.Commodity).ToList();
                             break;
                         case 2:
-                            orders.OrderBy(a => a.Details.Customer);
+                            orders = orders.OrderBy(a => a.Details.Customer).ToList();
                             break;
                         case 3:
-                            orders.OrderBy(a => a.Details.OrderPrice);
+                            orders = orders.OrderBy(a => a.Details.OrderPrice).ToList();
                             break;
+                        case 4:
+                            orders = orders.OrderBy(a => a.Id).ToList();
+                            break;
+                        default: throw new Exception();
                     }
                 }
                 catch
@@ -187,6 +190,7 @@ namespace OrderManagement
                                     alterprice = Convert.ToInt32(Console.ReadLine());
                                     order.Details.OrderPrice = alterprice;
                                     break;
+                                default: throw new Exception();
                             }
                             flag = 1;
                             break;
@@ -314,6 +318,7 @@ namespace OrderManagement
                             }
                             Console.WriteLine("*****************");
                             break;
+                        default: throw new Exception();
                     }
                 }
                 catch
@@ -353,6 +358,8 @@ namespace OrderManagement
                             quit = Console.ReadLine();
                             if (quit == "y") Environment.Exit(0);
                             break;
+                        default: throw new Exception("There is something wrong with your input" +
+                        ". Please try again.");
                     }
                     Console.WriteLine();
                 }
