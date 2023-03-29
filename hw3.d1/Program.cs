@@ -48,6 +48,30 @@ namespace OrderManagement
                        + this.Customer + "\nOrderPrice: " + Convert.ToString(this.OrderPrice);
             }
         }
+        class Custom
+        {
+            public string custom;
+            public Custom(string custom) 
+            {
+                this.custom = custom;
+            }
+            public override string ToString() 
+            {
+                return this.custom;
+            }
+        }
+        class Commo
+        {
+            public string commo;
+            public Commo(string commo) 
+            {
+                this.commo = commo;
+            }
+            public override string ToString() 
+            {
+                return this.commo;
+            }
+        }
         public class OrderService
         {
             public static List<Order> orders = new List<Order>();
@@ -60,7 +84,7 @@ namespace OrderManagement
                 while (true)
                 {
                     Console.WriteLine("Please input an Operation(1 represents add, 2 represents remove, " +
-                        "3 represents alter, 4 represents query): ");
+                        "3 represents alter, 4 represents query, 5 represent qiut(NO Result will be saved !) ): ");
                     opcode = Convert.ToInt32(Console.ReadLine());
                     switch (opcode)
                     {
@@ -210,11 +234,14 @@ namespace OrderManagement
                                         var res1 = from n in qorders
                                                    orderby n.Details.OrderPrice
                                                    select n;
+                                        Console.WriteLine("*****************");
+                                        Console.WriteLine();
                                         foreach (var item in res1)
                                         {
                                             Console.WriteLine(item.ToString());
                                             Console.WriteLine();
                                         }
+                                        Console.WriteLine("*****************");
                                         break;
                                     case 2:
                                         qorders.Clear();
@@ -230,11 +257,14 @@ namespace OrderManagement
                                         var res2 = from n in qorders
                                                    orderby n.Details.OrderPrice
                                                    select n;
+                                        Console.WriteLine("*****************");
+                                        Console.WriteLine();
                                         foreach (var item in res2)
                                         {
                                             Console.WriteLine(item.ToString());
                                             Console.WriteLine();
                                         }
+                                        Console.WriteLine("*****************");
                                         break;
                                     case 3:
                                         qorders.Clear();
@@ -250,11 +280,14 @@ namespace OrderManagement
                                         var res3 = from n in qorders
                                                    orderby n.Details.OrderPrice
                                                    select n;
+                                        Console.WriteLine("*****************");
+                                        Console.WriteLine();
                                         foreach (var item in res3)
                                         {
                                             Console.WriteLine(item.ToString());
                                             Console.WriteLine();
                                         }
+                                        Console.WriteLine("*****************");
                                         break;
                                     case 4:
                                         qorders.Clear();
@@ -270,18 +303,24 @@ namespace OrderManagement
                                         var res4 = from n in qorders
                                                    orderby n.Details.OrderPrice
                                                    select n;
+                                        Console.WriteLine("*****************");
+                                        Console.WriteLine();
                                         foreach (var item in res4)
                                         {
                                             Console.WriteLine(item.ToString());
                                             Console.WriteLine();
                                         }
+                                        Console.WriteLine("*****************");
                                         break;
                                     case 5:
+                                        Console.WriteLine("*****************");
+                                        Console.WriteLine();
                                         foreach (Order order1 in OrderService.orders)
                                         {
                                             Console.WriteLine(order1.ToString());
                                             Console.WriteLine();
                                         }
+                                        Console.WriteLine("*****************");
                                         break;
                                 }
                             }
@@ -290,6 +329,12 @@ namespace OrderManagement
                                 Console.WriteLine("There is something wrong with your input" +
                                     ". Please try again.");
                             }
+                            break;
+                        case 5:
+                            Console.WriteLine("Do you really want to quit? (y/n)");
+                            string quit;
+                            quit = Console.ReadLine();
+                            if (quit == "y") Environment.Exit(0);
                             break;
                     }
                     Console.WriteLine();
