@@ -1,0 +1,11 @@
+D:\code\CSharp\hw4.e3\obj\Debug\hw4.e3.csproj.AssemblyReference.cache
+D:\code\CSharp\hw4.e3\obj\Debug\hw4.e3.csproj.SuggestedBindingRedirects.cache
+D:\code\CSharp\hw4.e3\obj\Debug\hw4.e3.Form1.resources
+D:\code\CSharp\hw4.e3\obj\Debug\hw4.e3.Properties.Resources.resources
+D:\code\CSharp\hw4.e3\obj\Debug\hw4.e3.csproj.GenerateResource.cache
+D:\code\CSharp\hw4.e3\obj\Debug\hw4.e3.csproj.CoreCompileInputs.cache
+D:\code\CSharp\hw4.e3\bin\Debug\hw4.e3.exe.config
+D:\code\CSharp\hw4.e3\bin\Debug\hw4.e3.exe
+D:\code\CSharp\hw4.e3\bin\Debug\hw4.e3.pdb
+D:\code\CSharp\hw4.e3\obj\Debug\hw4.e3.exe
+D:\code\CSharp\hw4.e3\obj\Debug\hw4.e3.pdb
