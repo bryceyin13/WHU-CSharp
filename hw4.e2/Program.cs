@@ -1,0 +1,417 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.Design;
+using System.Linq;
+using System.Reflection.Metadata.Ecma335;
+using System.Text;
+using System.Threading.Tasks;
+using System.Runtime.Serialization;
+using System.Xml.Serialization;
+using System.Xml;
+using System.Runtime.ConstrainedExecution;
+
+namespace OrderManagement
+{
+    [Serializable]
+    public class Order
+    {
+        public int Id;
+        public OrderDetails Details;
+        public Order() { }
+        public Order(int Id, string Commodity, string Customer, int OrderPrice)
+        {
+            this.Id = Id;
+            this.Details = new OrderDetails(Commodity, Customer, OrderPrice);
+        }
+        bool Equals(Order o1)
+        {
+            return (this.Id == o1.Id) && this.Details.Equals(o1.Details);
+        }
+        public override string ToString()
+        {
+            return "Order ID: " + Convert.ToString(this.Id) + Details.ToString();
+        }
+        [Serializable]
+        public class OrderDetails
+        {
+            public string Commodity;
+            public string Customer;
+            public int OrderPrice;
+            public OrderDetails() { }
+            public OrderDetails(string Commodity, string Customer, int OrderPrice)
+            {
+                this.Commodity = Commodity;
+                this.Customer = Customer;
+                this.OrderPrice = OrderPrice;
+            }
+            bool Equals(OrderDetails d1)
+            {
+                return (this.Commodity == d1.Commodity) &&
+                    (this.Customer == d1.Customer) && (this.OrderPrice == d1.OrderPrice);
+            }
+            public override string ToString()
+            {
+                return "\nCommodity: " + this.Commodity + "\nCustomer: "
+                       + this.Customer + "\nOrderPrice: " + Convert.ToString(this.OrderPrice);
+            }
+        }
+        class Custom
+        {
+            public string custom;
+            public Custom(string custom)
+            {
+                this.custom = custom;
+            }
+            public override string ToString()
+            {
+                return this.custom;
+            }
+        }
+        class Commo
+        {
+            public string commo;
+            public Commo(string commo)
+            {
+                this.commo = commo;
+            }
+            public override string ToString()
+            {
+                return this.commo;
+            }
+        }
+        public class OrderService
+        {
+            public static List<Order> orders = new List<Order>();
+            public static void Export()
+            {
+                XmlSerializer xmlseror = new XmlSerializer(typeof(List<Order>));
+                string xmlFileName = "orders.xml";
+                FileStream fs = new FileStream(xmlFileName, FileMode.Create);
+                xmlseror.Serialize(fs, orders);
+                fs.Close();
+                string xml = File.ReadAllText(xmlFileName);
+                Console.WriteLine(xml);
+            }
+            public static void Import()
+            {
+                try
+                {
+                    Console.WriteLine("Please input the filename: ");
+                    string str = Console.ReadLine();
+                    string filepath = Directory.GetCurrentDirectory() + "/" + str + ".xml";
+                    FileStream fs = new FileStream(filepath, FileMode.Open);
+                    XmlSerializer xmlde = new XmlSerializer(typeof(List<Order>));
+                    orders = xmlde.Deserialize(fs) as List<Order>;
+                    fs.Close();
+                }
+                catch
+                {
+                    Console.WriteLine("Wrong filename or null to read !");
+                }
+            }
+            public static void Add(int Id, int oprice, string com, string cust)
+            {
+                try
+                {
+                    /*int Id, oprice;
+                    string com, cust;
+                    Console.WriteLine("Please input an Order ID: ");
+                    Id = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("Please input the Commodity: ");
+                    com = Console.ReadLine();
+                    Console.WriteLine("Please input the Customer: ");
+                    cust = Console.ReadLine();
+                    Console.WriteLine("Please input the OrderPrice: ");
+                    oprice = Convert.ToInt32(Console.ReadLine());*/
+                    Order newOrder = new Order(Id, com, cust, oprice);
+                    foreach (Order order in orders)
+                    {
+                        if (order.Equals(newOrder) || order.Id == Id)
+                            throw new Exception("Order is already existed. ");
+                    }
+                    orders.Add(newOrder);
+                    Console.WriteLine("Which attribute do you want to use as key of sorting?(" +
+                                "1 represents Commodity, " +
+                                "2 represents Customer, 3 represents OrderPrice. " +
+                                "Press 4 to use ID as tacit key)? ");
+                    int stype = 4;
+                    stype = Convert.ToInt32(Console.ReadLine());
+                    switch (stype)
+                    {
+                        case 1:
+                            orders = orders.OrderBy(a => a.Details.Commodity).ToList();
+                            break;
+                        case 2:
+                            orders = orders.OrderBy(a => a.Details.Customer).ToList();
+                            break;
+                        case 3:
+                            orders = orders.OrderBy(a => a.Details.OrderPrice).ToList();
+                            break;
+                        case 4:
+                            orders = orders.OrderBy(a => a.Id).ToList();
+                            break;
+                        default: throw new Exception();
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine("There is something wrong with your input. " +
+                        "Please try again.");
+                }
+            }
+            public static void Remove(int removeId)
+            {
+                try
+                {
+                    int flag = 0;
+                    Console.WriteLine("Please input the Id you want to remove: ");
+                    removeId = Convert.ToInt32(Console.ReadLine());
+                    foreach (Order order in orders)
+                    {
+                        if (order.Id == removeId)
+                        {
+                            flag = 1;
+                            orders.Remove(order);
+                            break;
+                        }
+                    }
+                    if (flag == 0)
+                        throw new Exception();
+                }
+                catch
+                {
+                    Console.WriteLine("There is something wrong with your input" +
+                        "(Nonexistent ID). Please try again.");
+                }
+            }
+            public static void Alter(int alterId, int alterid, string altercom, string altercust, int alterprice)
+            {
+                try
+                {
+                    int flag = 0;
+                    /*Console.WriteLine("Please input the Id you want to alter: ");
+                    alterId = Convert.ToInt32(Console.ReadLine());*/
+                    foreach (Order order in orders)
+                    {
+                        if (order.Id == alterId)
+                        {
+                            order.Id = alterid;
+                            order.Details.Commodity = altercom;
+                            order.Details.Customer = altercust;
+                            order.Details.OrderPrice = alterprice;
+                            /*int type, alterprice, alterid;
+                            string altercom, altercust;
+                            Console.WriteLine("What do you want to alter(" +
+                                "1 represents ID, 2 represents Commodity, " +
+                                "3 represents Customer, 4 represents OrderPrice)? ");
+                            type = Convert.ToInt32(Console.ReadLine());
+                            switch (type)
+                            {
+                                case 1:
+                                    Console.WriteLine("Please input the new ID: ");
+                                    alterid = Convert.ToInt32(Console.ReadLine());
+                                    order.Id = alterid;
+                                    break;
+                                case 2:
+                                    Console.WriteLine("Please input the new Commodity: ");
+                                    altercom = Console.ReadLine();
+                                    order.Details.Commodity = altercom;
+                                    break;
+                                case 3:
+                                    Console.WriteLine("Please input the new Customer: ");
+                                    altercust = Console.ReadLine();
+                                    order.Details.Customer = altercust;
+                                    break;
+                                case 4:
+                                    Console.WriteLine("Please input the new OrderPrice: ");
+                                    alterprice = Convert.ToInt32(Console.ReadLine());
+                                    order.Details.OrderPrice = alterprice;
+                                    break;
+                                default: throw new Exception();
+                            }*/
+                            flag = 1;
+                            break;
+                        }
+                    }
+                    if (flag == 0)
+                        throw new Exception();
+                }
+                catch
+                {
+                    Console.WriteLine("There is something wrong with your input" +
+                        "(Nonexistent ID). Please try again.");
+                }
+            }
+            public static List<Order> Query(int qtype, int qId, string qcom, string qcust, int qoprice)
+            {
+                /*try
+                {*/
+                    List<Order> qorders = new List<Order>();
+                    /*Console.WriteLine("What do you want to query(" +
+                                "1 represents ID, 2 represents Commodity, " +
+                                "3 represents Customer, 4 represents OrderPrice, 5 represents all orders)? ");
+                    int qtype = Convert.ToInt32(Console.ReadLine());*/
+                    switch (qtype)
+                    {
+                        case 1:
+                            qorders.Clear();
+                            /*Console.WriteLine("Please in put ID you want to query: ");
+                            int qId = Convert.ToInt32(Console.ReadLine());*/
+                            foreach (Order order1 in orders)
+                            {
+                                if (qId == order1.Id)
+                                {
+                                    qorders.Add(order1);
+                                }
+                            }
+                            /*var res1 = from n in qorders
+                                       orderby n.Details.OrderPrice
+                                       select n;
+                            Console.WriteLine("*****************");
+                            Console.WriteLine();
+                            foreach (var item in res1)
+                            {
+                                Console.WriteLine(item.ToString());
+                                Console.WriteLine();
+                            }
+                            Console.WriteLine("*****************");*/
+                            break;
+                        case 2:
+                            qorders.Clear();
+                            /*Console.WriteLine("Please in put Commodity you want to query: ");
+                            string qcom = Console.ReadLine();*/
+                            foreach (Order order1 in orders)
+                            {
+                                if (qcom == order1.Details.Commodity)
+                                {
+                                    qorders.Add(order1);
+                                }
+                            }
+                            /*var res2 = from n in qorders
+                                       orderby n.Details.OrderPrice
+                                       select n;
+                            Console.WriteLine("*****************");
+                            Console.WriteLine();
+                            foreach (var item in res2)
+                            {
+                                Console.WriteLine(item.ToString());
+                                Console.WriteLine();
+                            }
+                            Console.WriteLine("*****************");*/
+                            break;
+                        case 3:
+                            qorders.Clear();
+                            /*Console.WriteLine("Please in put Customer you want to query: ");
+                            string qcust = Console.ReadLine();*/
+                            foreach (Order order1 in orders)
+                            {
+                                if (qcust == order1.Details.Customer)
+                                {
+                                    qorders.Add(order1);
+                                }
+                            }
+                            /*var res3 = from n in qorders
+                                       orderby n.Details.OrderPrice
+                                       select n;
+                            Console.WriteLine("*****************");
+                            Console.WriteLine();
+                            foreach (var item in res3)
+                            {
+                                Console.WriteLine(item.ToString());
+                                Console.WriteLine();
+                            }
+                            Console.WriteLine("*****************");*/
+                            break;
+                        case 4:
+                            qorders.Clear();
+                            /*Console.WriteLine("Please in put ID you want to query: ");
+                            int qoprice = Convert.ToInt32(Console.ReadLine());*/
+                            foreach (Order order1 in orders)
+                            {
+                                if (qoprice == order1.Details.OrderPrice)
+                                {
+                                    qorders.Add(order1);
+                                }
+                            }
+                            /*var res4 = from n in qorders
+                                       orderby n.Details.OrderPrice
+                                       select n;
+                            Console.WriteLine("*****************");
+                            Console.WriteLine();
+                            foreach (var item in res4)
+                            {
+                                Console.WriteLine(item.ToString());
+                                Console.WriteLine();
+                            }
+                            Console.WriteLine("*****************");*/
+                            break;
+                        case 5:
+                            /*Console.WriteLine("*****************");
+                            Console.WriteLine();*/
+                            foreach (Order order1 in orders)
+                            {
+                                Console.WriteLine(order1.ToString());
+                                Console.WriteLine();
+                            }
+                            //Console.WriteLine("*****************");
+                            break;
+                        default: break;
+                    }
+                    return qorders;/*
+                }
+                catch
+                {
+                    Console.WriteLine("There is something wrong with your input" +
+                        ". Please try again.");
+                }*/
+            }
+        }
+        public class MainClass
+        {
+            public static void Main(string[] args)
+            {
+                /*int opcode;
+                while (true)
+                {
+                    Console.WriteLine("Please input an Operation(1 represents add, 2 represents remove, " +
+                        "3 represents alter, 4 represents query, 5 represents serialize, 6 represents deserialize, " +
+                        "7 represents qiut(NO Result will be saved !) ): ");
+                    opcode = Convert.ToInt32(Console.ReadLine());
+                    switch (opcode)
+                    {
+                        case 1:
+                            OrderService.Add();
+                            break;
+                        case 2:
+                            OrderService.Remove();
+                            break;
+                        case 3:
+                            OrderService.Alter();
+                            break;
+                        case 4:
+                            OrderService.Query();
+                            break;
+                        case 5:
+                            OrderService.Export();
+                            break;
+                        case 6:
+                            OrderService.Import();
+                            break;
+                        case 7:
+                            Console.WriteLine("Do you really want to quit? (y/n)");
+                            string quit;
+                            quit = Console.ReadLine();
+                            if (quit == "y") Environment.Exit(0);
+                            break;
+                        default:
+                            throw new Exception("There is something wrong with your input" +
+                        ". Please try again.");
+                    }
+                    Console.WriteLine();
+                }*/
+            }
+        }
+    }
+}
